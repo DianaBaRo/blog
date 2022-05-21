@@ -3,7 +3,6 @@ AllCops:
     - 'db/schema.rb'
     - 'bin/bundle'
     - 'app/controllers//**'
-    
     - 'spec/rails_helper.rb'
 Documentation:
   Enabled: false
