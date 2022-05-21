@@ -5,4 +5,6 @@ class CommentReaction < ApplicationRecord
   belongs_to :reaction
 
   accepts_nested_attributes_for :reaction
+
+  validates :reaction_count, presence: true
 end
