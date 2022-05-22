@@ -1,15 +1,8 @@
-inherit_from: .rubocop_todo.yml
 AllCops:
-TargetRubyVersion: 3.0
   Exclude:
-    - '**/scripts/**/**/**/*'
-    - 'vendor/**/*'
-    - '**/tmp/**/*'
-    - '**/db/data/**/*'
-    - '**/db/data_schema.rb'
-    - '**/db/schema.rb'
-    - '**/bin/**/*'
-    - '**/node_modules/**/*'
-    - 'guides/**/*'
+    - 'db/schema.rb'
+    - 'bin/bundle'
+    - 'app/controllers//**'
+    - 'spec/rails_helper.rb'
 Documentation:
   Enabled: false

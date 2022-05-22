@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :users
-  
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   resources :comments do
-    resources :comment_reactions, only: [:new, :create, :index]
+    resources :comment_reactions, only: %i[new create index]
   end
 
   resources :comment_reactions do
