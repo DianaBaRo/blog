@@ -1,0 +1,26 @@
+<%= render partial: 'layouts/navbar' %>
+<div>
+  <h1>New comment</h1>
+  <br /><br />
+</div>
+<div>
+  <%= render partial: 'layouts/errors', locals: {object: @comment}  %>
+  <%= form_for(@comment) do |f|%>
+    <% if params[:post_id] %>
+      <%= f.hidden_field :post_id %>
+    <% else %>
+      <div>
+        <%= f.label :post_id, "Select a Post:  " %>
+        <%= f.collection_select :post_id, Post.all, :id, :title, include_blank: true %>
+        <br />
+      </div>
+    <% end %>
+    <div>
+      <br />
+      <%= f.label :content, "Comment:  " %>
+      <%= f.text_area :content, size: "38x3" %>
+    </div>
+    <br>
+    <button type=f.submit>Comment post</button>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<% if @comment %>
+  <%= render partial: 'layouts/navbar' %>
+  <div>
+    <h1>Edit comment</h1>
+    <br /><br />
+  </div>
+  <div>
+    <%= render partial: 'layouts/errors', locals: {object: @comment}  %>
+    <%= render 'form' %>
+  </div>
+<% end %>
