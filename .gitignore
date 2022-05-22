@@ -32,3 +32,6 @@
 
 # Rubocop
 .rubocop-http*
+
+#Ignore node modules
+node_modules
