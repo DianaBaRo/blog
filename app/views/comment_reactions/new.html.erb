@@ -1,0 +1,39 @@
+<%= render partial: 'layouts/navbar' %>
+<div>
+  <h1>New reaction</h1>
+  <br /><br />
+</div>
+<div>
+<% if flash[:error] %>
+  <div class="alert alert-danger" role="alert">
+    <div id="error_explanation">
+      <%= flash[:error] %>
+    </div>
+  </div>
+<% end %>
+<%= render partial: 'layouts/errors', locals: {object: @comment_reaction}  %>
+<%= form_for([@comment_reaction.comment, @comment_reaction]) do |f|%>
+  <% if params[:comment_id] %>
+    <%= f.hidden_field :comment_id %>
+  <% else %>
+    <div>
+      <%= f.label :comment_id, "Select a comment " %>
+      <%= f.collection_select :comment_id, Comment.all, :id, :content, include_blank: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :reaction_id, "Select a reaction  " %>
+    <%= f.collection_select :reaction_id, Reaction.all, :id, :emoji, include_blank: true %>
+    <%= f.fields_for :reaction, @reaction do |r| %>
+      <%= r.label :emoji, "Or create a new one:  " %>
+      <%= r.text_field :emoji %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :reaction_count %>
+    <%= f.number_field :reaction_count, max:1 %>
+  </div>
+  <br>
+
+  <button type=f.submit>Add reaction</button>
+<% end %>

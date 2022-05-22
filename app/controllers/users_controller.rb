@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @posts = @user.posts
 
     if current_user.id == params[:id].to_i # authorization
       @user

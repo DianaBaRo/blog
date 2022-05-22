@@ -4,7 +4,7 @@ class CommentReaction < ApplicationRecord
   belongs_to :comment
   belongs_to :reaction
 
-  accepts_nested_attributes_for :reaction
-
-  validates :reaction_count, presence: true
+  validates :reaction_count, presence: true,
+                             numericality: { only_integer: true, message: 'should be added and should be a number' }
+  validates :reaction_id, uniqueness: { scope: :comment_id, message: 'should be unique per comment' }
 end

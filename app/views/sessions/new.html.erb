@@ -1,6 +1,10 @@
 <div> 
   <h1>Login here</h1><br />
 
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
+
   <%= form_for(:user) do |f| %>
     <div>
       <%= f.label :email %>

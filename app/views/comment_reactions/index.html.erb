@@ -1,0 +1,20 @@
+<% if @comment %>
+  <%= render partial: 'layouts/navbar' %>
+  <div>
+    <h1>Reactions for <%= @comment.content %></h1>
+    <br /><br />
+  </div>
+  <div>
+    <%= form_tag destroy_multiple_comment_reactions_path, method: :delete do %>
+      <%= hidden_field_tag "comment_id", params[:comment_id] %>
+      <% @comment.comment_reactions.each do |cr| %>
+        <%= check_box_tag "comment_reactions[]", cr.id %>
+        <%= cr.reaction.emoji %><br/>
+      <% end %>
+      <br /><br />
+      <% if not_empty @comment.comment_reactions %>
+        <button type=submit_tag>Delete selected</button>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
