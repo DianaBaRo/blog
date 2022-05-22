@@ -1,0 +1,16 @@
+<%= render partial: 'layouts/navbar' %>
+<div>
+  <h1>New reaction</h1>
+  <br /><br />
+</div>
+<div>
+  <%= render partial: 'layouts/errors', locals: {object: @reaction}  %>
+  <%= form_for(@reaction) do |f|%>
+    <div>
+      <%= f.label :comment_id, "Select a Comment:  " %>
+      <%= f.collection_select :comment_id, Comment.all, :id, :content, include_blank: true %>
+    </div>
+    <br>
+    <button type=f.submit>React to post</button>
+  <% end %>
+</div>

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Reaction < ApplicationRecord
-  belongs_to :user
-  belongs_to :comment
+  has_many :comments, through: :comment_reactions
 
   validates :emoji, presence: true
 end
