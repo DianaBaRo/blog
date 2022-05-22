@@ -1,0 +1,33 @@
+<% if @post %>
+  <div>
+    <h1><%= @post.title %></h1>
+    <br />
+  </div>
+  <div>
+    <ul>
+      <li> <%= @post.body %> - Post created by <%= @post.user.name %></li>
+    </ul>
+  </div>
+  <br />
+  <div>
+    <% if not_empty @post.comments %>
+      <h3><strong>Comments:</h3>
+      <% @post.comments.each do |comment| %>
+        <p><%= comment.content %>
+        | <strong>Commented by <%= comment.user.name %></strong> | <%= link_to "Link to comment",  comment_path(comment) %><br /> </p>
+      <% end %>
+    <% end %>
+ </div>
+    
+  <div>
+    <div>
+      <%= link_to "Comment post", new_post_comment_path(@post) %>
+    </div>
+    <div>
+        <%= link_to "Edit post", edit_post_path(@post) %>
+    </div>
+    <div>
+    <%= button_to "Delete post", @post, method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+    </div>
+  </div>
+<% end %>

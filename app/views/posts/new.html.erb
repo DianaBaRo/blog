@@ -1,0 +1,9 @@
+<%= render partial: 'layouts/navbar' %>
+<div>
+  <h1>Create a new post</h1>
+  <br /><br />
+</div>
+<div>
+  <%= render partial: 'layouts/errors', locals: {object: @post} %>
+  <%= render 'form' %>
+</div>
