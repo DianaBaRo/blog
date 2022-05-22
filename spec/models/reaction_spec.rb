@@ -4,8 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Reaction, type: :model do
   describe 'Reaction associations' do
-    it { should belong_to(:user) }
-    it { should belong_to(:comment) }
+    it { should respond_to(:comments) }
   end
 
   describe 'Create a Reaction' do
