@@ -1,33 +1,25 @@
 <div>
   <%= render partial: 'layouts/errors', locals: {object: @user}  %>
-
   <h1>Sign up</h1><br />
-
   <%= form_for(@user) do |f| %>
     <div>
       <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
-
     <div>
       <%= f.label :email %>
       <%= f.email_field :email %>
     </div>
-
     <div>
       <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
-
     <div>
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     </div>
-
     <p>Admin? <%= f.check_box :admin %></p><br />
     <br />
-
     <button type=f.submit>Sign Up</button>
-
   <% end %>
 </div>

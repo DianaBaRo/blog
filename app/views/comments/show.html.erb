@@ -5,7 +5,7 @@
     <ul>
       <li> <%= @comment.content %>
         <div>
-          <% if not_empty @comment.comment_reactions %>
+          <% if @comment.comment_reactions %>
             <li>Reactions: <% @comment.comment_reactions.each do |cr| %>
               <%= cr.reaction.emoji %> 
               (<%= cr.reaction_count %>)
