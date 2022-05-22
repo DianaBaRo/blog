@@ -1,13 +1,12 @@
-
 <%= form_for(@post) do |f| %>
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %><br>
-    </div>
-    <div>
-      <%= f.label :body %>
-      <%= f.text_area :body, size: "24x6" %><br>
-    </div>
-  
-    <button type=f.submit>Post</button>
-  <% end %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+  </div>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body, size: "24x6" %><br>
+  </div>
+
+  <button type=f.submit>Post</button>
+<% end %>

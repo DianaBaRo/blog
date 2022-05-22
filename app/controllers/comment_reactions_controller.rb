@@ -1,6 +1,5 @@
 class CommentReactionsController < ApplicationController
   before_action :require_login
-  # before_action :admin_only
 
   def new
     @comment = Comment.find_by_id(params[:comment_id])
@@ -12,12 +11,6 @@ class CommentReactionsController < ApplicationController
   def create
     @reaction = Reaction.create(user_id: current_user.id, comment_id: comment_reaction_params[:comment_id], emoji: comment_reaction_params[:reaction][:emoji])
     
-    # if selecting_and_creating_reaction #admin user is selecting and creating a reaction
-    #   flash[:error] = "Please, select a reaction or create a new one, not both."
-    #   @comment_reaction = CommentReaction.new
-    #   @comment_reaction.comment_id = params[:comment_id]
-    #   render :new and return
-    # end
     @comment = Comment.find_by_id(comment_reaction_params[:comment_id])
     @comment_reaction = CommentReaction.new
     @comment_reaction.comment_id = comment_reaction_params[:comment_id]
@@ -53,10 +46,6 @@ class CommentReactionsController < ApplicationController
   def comment_reaction_params
     params.require(:comment_reaction).permit(:comment_id, :reaction_id, :reaction_count, {:reaction => [:emoji]})
   end
-
-  # def selecting_and_creating_reaction
-  #   comment_reaction_params[:reaction_id] != '' && comment_reaction_params[:reaction_attributes][:emoji] != ""
-  # end
 
   def creating_reaction
     comment_reaction_params[:reaction_id] == ''

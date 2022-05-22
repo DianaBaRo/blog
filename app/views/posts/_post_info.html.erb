@@ -14,7 +14,11 @@
       <h3><strong>Comments:</h3>
       <% @post.comments.each do |comment| %>
         <p><%= comment.content %>
-        | <strong>Commented by <%= comment.user.name %></strong> | <%= link_to "Link to comment",  comment_path(comment) %><br /> </p>
+        | <strong>Commented by <%= comment.user.name %></strong> | <%= link_to "Link to comment",  comment_path(comment) %><br /> 
+        | Reactions: <% comment.reactions.each do |r| %>
+            <%= r.emoji %>
+          <% end %>
+        </p>
       <% end %>
     <% end %>
  </div>
