@@ -16,4 +16,18 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  resources :comments do
+    resources :comment_reactions, only: [:new, :create, :index]
+  end
+
+  resources :comment_reactions do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
+
+  resources :posts do
+    resources :comments
+  end
 end
