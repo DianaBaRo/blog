@@ -77,7 +77,7 @@ $ rspec
 $ rubocop
 ```
 
-### Improvements
+### Future improvements
 
 * Tests for controllers and integration tests
 * Validation and flash erros not showing 
